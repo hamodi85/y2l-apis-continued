@@ -15,7 +15,31 @@ def study_image():
     # example we covered in the slides! 
 
     # YOUR CODE HERE!
-    
+
+
+  	headers = {'Authorization': 'Key <lets_have_shrex>'}
+
+# this is the url of where your request will go
+	api_url = "https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs"
+
+# this is content of the message(data) you are sending to clarifai
+	data ={"inputs": [
+		{
+			"data": {
+			"image": {
+				"url": "https://samples.clarifai.com/metro-north.jpg"
+			}
+		}
+	}
+	]}
+
+# putting everything together; sending the request!
+	response = requests.post(api_url, headers=headers, data=json.dumps(data))
+
+
+
+
+
     return render_template('home.html', results="No results yet :(")
 
 if __name__ == '__main__':
